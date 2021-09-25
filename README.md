@@ -1,6 +1,8 @@
 Cluster
 ================
 
+Kmeans :
+
 ### setwd(“\~/AMV-21/2nd\_Parcial”)
 
 ## Construir los vectores

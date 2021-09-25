@@ -3,6 +3,7 @@ title: "Cluster"
 output: github_document
 ---
 
+Kmeans : 
 
 ### setwd("~/AMV-21/2nd_Parcial")
 
