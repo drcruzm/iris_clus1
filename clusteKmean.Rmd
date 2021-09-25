@@ -1,0 +1,60 @@
+---
+title: "IRIS CLUSTER"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "")
+```
+
+# import data set
+
+```{r}
+
+library(datasets)
+
+# it will display heading of the data wtih initial rows 
+head(iris,3)
+names(iris)
+
+```
+
+
+## Calculo de los clusters by Kmeans
+
+```{r}
+
+library(ggplot2)
+
+ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) + geom_point()
+
+
+# set the point on initial seed
+set.seed(15)
+
+# create k-Means Cluster for iris data set
+irisCluster <- kmeans(iris[,3:4], 3, nstart = 15)
+
+
+irisCluster
+```
+
+
+# Tabla con los clusters calculados
+
+```{r}
+table(irisCluster$cluster, iris$Species)
+```
+
+## Nuevo plot con los clusters calculados
+
+```{r}
+
+irisCluster$cluster <- as.factor(irisCluster$cluster)
+
+# plot cluster using K-Means model
+
+ggplot(iris, aes(Petal.Length, Petal.Width, color = 
+                   irisCluster$cluster)) +
+      geom_point()
+```
