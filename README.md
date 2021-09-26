@@ -3,7 +3,7 @@ Cluster
 
 Kmeans :
 
-### setwd(“\~/AMV-21/2nd\_Parcial”)
+## setwd(“\~/AMV-21/2nd\_Parcial”)
 
 ## Construir los vectores
 
@@ -53,5 +53,11 @@ rect.hclust(dendograma, k=3, border = "green")
 ``` r
 data("iris")
 View(iris)
+names(iris)
+```
+
+    ## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
+
+``` r
 flores <- iris
 ```

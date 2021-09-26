@@ -5,7 +5,7 @@ output: github_document
 
 Kmeans : 
 
-### setwd("~/AMV-21/2nd_Parcial")
+##  setwd("~/AMV-21/2nd_Parcial")
 
 
 ## Construir los vectores
@@ -38,6 +38,7 @@ rect.hclust(dendograma, k=3, border = "green")
 ```{r}
 data("iris")
 View(iris)
+names(iris)
 flores <- iris
 ```
 
