@@ -1,0 +1,88 @@
+---
+title: "solucion 2"
+output: github_document
+---
+
+```{r eval=FALSE, include=FALSE}
+setwd("~/Documents/AMV/P1")
+```
+
+```{r }
+library(ggplot2)
+library(plotly)
+#library(UsingR)
+#library(DataExplorer)
+```
+
+```{r eval=FALSE, include=FALSE}
+rm(list = ls(all = TRUE)) #para limpiar datos
+```
+
+
+```{r}
+datos2 <- read.csv("https://www.dropbox.com/s/xn5cci0syr02drm/floresb.csv?dl=1")
+#View(datos2)
+```
+
+## pregunta 2: Escribir los nombres de las variables categoricas de la base de datos
+
+```{r}
+str(datos2) 
+summary(datos2)
+```
+
+## pregunta 3: Escribe un código para realizar un scatter plot (grafica de puntos) de todas las especies; graficando la longitud del pétalo vs longitud del sépalo .
+
+```{r}
+p1 <- ggplot(datos2, aes(x=Petal.Length, y=Sepal.Length)) + geom_point() 
+
+ggplotly(p1)
+```
+
+## pregunta 4: Modifica la gráfica de puntos de la longitud del pétalo vs longitud del sépalo  para que ahora se puedan distinguir las tres especies (un color diferente cada una)  .
+
+```{r}
+p2 <- ggplot(datos2, aes(x=Petal.Length, y=Sepal.Length)) + geom_point(aes(col=Species)) 
+
+ggplotly(p2)
+```
+
+## preguntas 5: Analicemos usando box-plot los valores de longitud y el ancho de los pétalos en función de las especies de flores.
+
+```{r}
+g1 <- ggplot(datos2, aes(x=factor(Species), y=Petal.Length)) + geom_boxplot() 
+g2 <- ggplot(datos2, aes(x=factor(Species), y=Petal.Width)) + geom_boxplot() 
+
+ggplotly(g1)
+ggplotly(g2)
+
+```
+
+## pregunta 6: Mediante una grafica de plotly; grafica a las especies de flores contra longitud del pétalo, Y reporta los valores exactos de la mediana, y el rango Inter cuartil. 
+
+```{r}
+g3 <- ggplot(datos2, aes(x=factor(Species), y=Petal.Length)) + geom_boxplot() 
+
+ggplotly(g3)
+```
+
+## pregunta 7: Mediante una grafica de plotly;  grafica a las especies de flores contra ancho del pétalo, Y reporta los valores exactos de la mediana, y el rango Inter cuartil.
+
+```{r}
+g4 <- ggplot(datos2, aes(x=factor(Species), y=Petal.Width)) + geom_boxplot() 
+
+ggplotly(g4)
+```
+
+##: Pregunta 10: Haz un subgrupo con la especia Setosa y reporta con plotly los valores de los sépalos, TODOS
+
+```{r}
+sub1<-subset(datos2, Species=="setosa")
+head(sub1)
+ 
+p3 <- ggplot(sub1)+geom_boxplot(aes(Species, Sepal.Length, fill=Species))+ ggtitle("Gráfica de longitud de petalos de la especie setosa") 
+ggplotly(p3)
+
+p4 <- ggplot(sub1)+geom_boxplot(aes(Species, Sepal.Width, fill=Species))+ ggtitle("Gráfica de ancho de petalos de la especie setosa")
+ggplotly(p4)
+```
